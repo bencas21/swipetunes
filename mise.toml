@@ -1,0 +1,17 @@
+[tools]
+node = "20"
+python = "3.11"
+
+[tasks.setup]
+description = "Install all dependencies and create virtual environments"
+run = [
+  "cd web && npm install",
+  "cd infra && python -m venv .venv && .venv/Scripts/pip install -r requirements.txt",
+  "cd backend && python -m venv .venv && .venv/Scripts/pip install -r requirements.txt"
+]
+
+[tasks.dev]
+description = "Run frontend dev server"
+run = [
+  "cd web && npm run dev"
+]
