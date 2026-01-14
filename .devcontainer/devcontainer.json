@@ -1,17 +1,8 @@
 {
   "name": "swipetunes",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "20"
-    },
-    "ghcr.io/devcontainers/features/aws-cli:1": {},
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/common-utils:2": {}
-  },
-  "postCreateCommand": "npm install -g aws-cdk",
+  "build": { "dockerfile": "Dockerfile" },
+  "remoteUser": "root",
+  "postCreateCommand": "pip3 install -r infra/requirements.txt && pip3 install -r infra/requirements-dev.txt && pip3 install -r backend/requirements.txt && cd web && npm install",
   "customizations": {
     "vscode": {
       "extensions": [
